@@ -3,11 +3,11 @@ node {
 
     stage('Clone repository') {
         
-        app.inside{
-            sh 'mvn clean package'
-        }
 
         checkout scm
+    }
+    stage('Build the maven'){
+        sh 'mvn clean package'
     }
 
     stage('Build image') {
@@ -15,13 +15,7 @@ node {
        app = docker.build("anantj1/spring_pro")
     }
 
-    stage('Test image') {
-  
-
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
-    }
+ 
 
     stage('Push image') {
         
