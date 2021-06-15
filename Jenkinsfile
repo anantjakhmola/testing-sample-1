@@ -1,7 +1,17 @@
 node {
+
+    stage('Fetching and building the docker app') {
+            steps {
+                sh 'git clone https://github.com/anantjakhmola/testing-sample-1.git'
+                sh '''
+                    mvn clean package
+                '''
+            }
+        }
+
     checkout scm
 
-    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub-cred') {
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-cred') {
 
         def customImage = docker.build("anantj1/spring_pro:latest ")
 
