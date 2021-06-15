@@ -1,7 +1,7 @@
 node {
     checkout scm
 
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-cred') {
+    docker.withRegistry('https://registry.hub.docker.com', 'Dockerhub-cred') {
 
         def customImage = docker.build("anantj1/spring_pro:latest ")
 
