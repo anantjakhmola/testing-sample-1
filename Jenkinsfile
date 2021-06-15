@@ -12,7 +12,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("anantj1/spring_pro")
+       app = docker.build("anantj1/spring-pro")
     }
 
  
